@@ -11,7 +11,7 @@ return {
     
     -- Minigame Settings
     Minigame = {
-        Enabled = true, -- Set to false to disable minigames completely
+        Enabled = false, -- Set to false to disable minigames completely
         Type = "boii", -- Options: "ps-ui", "boii"
         Settings = {
             -- PS-UI Circle settings

@@ -266,9 +266,17 @@ local function SearchGarbage()
     isInteracting = true
 
     WalkToEntityAndSearch(entity, function()
-        Debug("Walk to entity completed, starting minigame")
+        Debug("Walk to entity completed")
         
-        -- Run minigame first
+        if IsPropOnCooldown(entity) then
+            Debug("Prop was searched by someone else while walking to it")
+            CustomNotify("Someone else just searched this. Try another.", "error")
+            ClearPedTasks(PlayerPedId())
+            isInteracting = false
+            return
+        end
+        
+        Debug("Starting minigame")
         RunMinigame(function(success)
             if success then
                 Debug("Minigame succeeded, starting progress bar")
